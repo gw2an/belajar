@@ -4,6 +4,7 @@ namespace OopModel;
 
 public class dbCtx : DbContext
 {
+    public bool IsPrivate { get; set; }
     static readonly string conStr;
     public DbSet<Unggas> unggass { get; set; }
     public DbSet<KakiEmpat> kakiempats { get; set; }

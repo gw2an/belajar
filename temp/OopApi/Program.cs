@@ -1,12 +1,13 @@
 using OopModel;
 
 var builder = WebApplication.CreateBuilder(args);
-
+var svc = builder.Services;
+svc.AddAuthentication();
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<dbCtx>();
+svc.AddEndpointsApiExplorer();
+svc.AddSwaggerGen();
+svc.AddDbContext<dbCtx>();
 //builder.Services.AddDbContext<dbCtx>((s,o) => {  } );
 
 var app = builder.Build();

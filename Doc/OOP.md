@@ -1,2 +1,4 @@
-Build Minimal API
+Build Minimal API :
+> dotnet new webapi -minimal -n OopApi
+
 

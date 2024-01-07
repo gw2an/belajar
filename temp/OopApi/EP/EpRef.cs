@@ -1,15 +1,13 @@
 using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
+using OopModel;
 using System.Diagnostics.Eventing.Reader;
 
 static public class EpFnRef
 {
 
-    public abstract class entTbBase
-    {
-        public int Id { get; set; }
-    }
-    public static void FnTBBase<DB, T>(this IEndpointRouteBuilder app) where T : entTbBase where DB : DbContext
+
+    public static void FnTBBase<DB, T>(this IEndpointRouteBuilder app) where T : entTBBase where DB : DbContext
     {
         Type t = typeof(T);
         string route = t.Name;

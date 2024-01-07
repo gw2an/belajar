@@ -11,9 +11,9 @@ public class dbCtx : DbContext
     {
         conStr = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=OOPDB;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
     }
-    public dbCtx(DbContextOptions<dbCtx> opsi) : base(opsi)
-    {
-    }
+    //public dbCtx(DbContextOptions<dbCtx> opsi) : base(opsi)
+    //{
+    //}
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseSqlServer(conStr);

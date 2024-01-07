@@ -1,9 +1,12 @@
+using OopModel;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddDbContext<dbCtx>();
 
 var app = builder.Build();
 
@@ -20,6 +23,8 @@ var summaries = new[]
 {
     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
 };
+app.FnTBBase<dbCtx,Unggas>();
+app.FnTBBase<dbCtx, KakiEmpat>();
 
 app.MapGet("/weatherforecast", () =>
 {

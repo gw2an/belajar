@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<dbCtx>();
+//builder.Services.AddDbContext<dbCtx>((s,o) => {  } );
 
 var app = builder.Build();
 
@@ -23,8 +24,8 @@ var summaries = new[]
 {
     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
 };
-app.FnTBBase<dbCtx,Unggas>();
-app.FnTBBase<dbCtx, KakiEmpat>();
+app.FnTblBase<dbCtx,Unggas>();
+app.FnTblBase<dbCtx, KakiEmpat>();
 
 app.MapGet("/weatherforecast", () =>
 {

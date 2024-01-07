@@ -23,7 +23,7 @@ namespace OopModel
     }
     public enum enJenNafas : byte
     {
-        ParuParu = 1, Insang = 2, Hybrid = 4
+        ParuParu = 1, Insang = 2, Hybrid = 3
     }
     public enum enHabitat : byte
     {
@@ -36,7 +36,8 @@ namespace OopModel
     }
     public class Animal : entTBBase
     {
-        public string Nama { get; set; }
+        public required string Nama { get; set; }
+        [Range(1, 2)]
         public enJenAnimal KembangBiak { get; set; }
         public enHabitat Habitat { get; set; }
         public enJenNafas Nafas { get; set; }
@@ -46,12 +47,19 @@ namespace OopModel
 
     public class Unggas : Animal
     {
-        public bool IsTerbang { get; set; }
-        public bool IsKicau { get; set; }
+        public bool IsTerbang { get; set; } = true;
+        public bool IsKicau { get; set; } = false;
     }
 
     public class KakiEmpat : Animal
     {
 
     }
+    public class Ikan : Animal
+    {
+        Ikan() { Habitat = enHabitat.Air; }
+        [Range(1,2)]
+        public byte JenisAir { get; set; }  // 1: Tawar, 2: Payau, 3:Asin
+    }
+
 }

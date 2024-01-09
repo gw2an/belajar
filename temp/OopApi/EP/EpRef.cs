@@ -3,8 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using OopModel;
 using System.Diagnostics.Eventing.Reader;
 
-static public class EpFnRef
+ public static class EpFnRef
 {
+
     public static void FnMap<DB, T>(WebApplication ap, string grp, string tags) where DB : DbContext where T : entTBBase
     {
         Type t = typeof(T);

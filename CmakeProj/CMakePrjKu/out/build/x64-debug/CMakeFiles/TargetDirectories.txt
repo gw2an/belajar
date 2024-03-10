@@ -1,0 +1,5 @@
+C:/Repo/Belajar/CmakeProj/CMakePrjKu/out/build/x64-debug/CMakeFiles/edit_cache.dir
+C:/Repo/Belajar/CmakeProj/CMakePrjKu/out/build/x64-debug/CMakeFiles/rebuild_cache.dir
+C:/Repo/Belajar/CmakeProj/CMakePrjKu/out/build/x64-debug/CMakePrjKu/CMakeFiles/CMakePrjKu.dir
+C:/Repo/Belajar/CmakeProj/CMakePrjKu/out/build/x64-debug/CMakePrjKu/CMakeFiles/edit_cache.dir
+C:/Repo/Belajar/CmakeProj/CMakePrjKu/out/build/x64-debug/CMakePrjKu/CMakeFiles/rebuild_cache.dir

@@ -1,5 +1,6 @@
 using Microsoft.FluentUI.AspNetCore.Components;
 using FluBlzApp.Components;
+using FluBlzApp.Svc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,7 +9,7 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
 builder.Services.AddFluentUIComponents();
-
+builder.Services.AddScoped<IMenuService, MenuService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

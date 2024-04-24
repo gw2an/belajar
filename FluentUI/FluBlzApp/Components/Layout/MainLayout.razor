@@ -1,10 +1,10 @@
 ﻿@inherits LayoutComponentBase
 <FluentLayout>
     <FluentHeader>
-        FluBlzApp
+        Fluent UI in Blazor Server
     </FluentHeader>
     <FluentStack Class="main" Orientation="Orientation.Horizontal" Width="100%">
-        <NavMenu />
+        <MenuA />
         <FluentBodyContent>
             <div class="content">
                 @Body
@@ -19,6 +19,7 @@
             <a href="https://learn.microsoft.com/en-us/aspnet/core/blazor" target="_blank">About Blazor</a>
         </div>
     </FluentFooter>
+   <FluentDialogProvider />
 </FluentLayout>
 
 <div id="blazor-error-ui">

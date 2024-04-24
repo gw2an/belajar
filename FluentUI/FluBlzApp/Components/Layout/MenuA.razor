@@ -1,0 +1,66 @@
+﻿@using FluBlzApp.Svc
+@inject IMenuService MenuService
+@rendermode InteractiveServer
+
+<div class="navmenu">
+    <input type="checkbox" id="navmenu-toggle" />
+    <nav class="sitenav" aria-labelledby="main-menu" onclick="document.getElementById('navmenu-toggle').click();">
+        <div style="background: var(--neutral-layer-3); display: flex; padding: 10px;">
+            <FluentNavMenu Collapsible="true" @bind-Expanded="@expanded" Width="250" Title="Custom Navigation Menu">
+                @foreach (var item in menuItems)
+                {
+                    if (item.SubItems.Any())
+                    {
+                        <FluentNavGroup OnClick="OnClick" Title="@item.Title" Icon="item.Iconne">
+                            @* <ChildContent> *@
+                            @foreach (var sbitem in item.SubItems)
+                            {
+                                <FluentNavLink Href="@sbitem.Link" Icon="@sbitem.Iconne">@sbitem.Title</FluentNavLink>
+                            }
+                            @* </ChildContent> *@
+                        </FluentNavGroup>
+                    }
+                    else
+                    {
+                        <FluentNavLink Href="@item.Link" Match="NavLinkMatch.All" Icon="@item.Iconne" IconColor="Color.Accent">@item.Title</FluentNavLink>
+                    }
+
+                }
+
+                <FluentNavGroup Expanded="true" Title="Item 6 Item 6 Item 6 Item 6 Item 6" Icon="@(new Icons.Regular.Size20.EarthLeaf())">
+                    <FluentNavLink Icon="@(new Icons.Regular.Size20.LeafOne())">Item 6.1</FluentNavLink>
+                    <FluentNavLink Icon="@(new Icons.Regular.Size20.LeafTwo())">Item 6.2</FluentNavLink>
+                    <FluentNavGroup Expanded="true" Title="Item 6.3" Icon="@(new Icons.Regular.Size20.EarthLeaf())">
+                        <FluentNavLink Icon="@(new Icons.Regular.Size20.LeafOne())">Item 6.3.1 Item 6.3.1 Item 6.3.1</FluentNavLink>
+                        <FluentNavLink Icon="@(new Icons.Regular.Size20.LeafTwo())">Item 6.3.2</FluentNavLink>
+                        <FluentNavGroup Expanded="true" Title="Item 6.3.3 Item 6.3.3 Item 6.3.3" Icon="@(new Icons.Regular.Size20.EarthLeaf())">
+                            <FluentNavLink Icon="@(new Icons.Regular.Size20.LeafOne())">Item 6.3.3.1</FluentNavLink>
+                            <FluentNavLink Disabled="true" Icon="@(new Icons.Regular.Size20.LeafTwo())">Item 6.3.3.2</FluentNavLink>
+                            <FluentNavGroup Disabled="true" Expanded="true" Title="Item 6.3.3.3" Icon="@(new Icons.Regular.Size20.EarthLeaf())">
+                                <FluentNavLink Icon="@(new Icons.Regular.Size20.LeafOne())">Item 6.3.3.3.1</FluentNavLink>
+                                <FluentNavLink Icon="@(new Icons.Regular.Size20.LeafTwo())">Item 6.3.3.3.2</FluentNavLink>
+                            </FluentNavGroup>
+                        </FluentNavGroup>
+                    </FluentNavGroup>
+                </FluentNavGroup>
+            </FluentNavMenu>
+        </div>
+    </nav>
+</div>
+@code
+{
+    bool expanded = true;
+    void OnClick(MouseEventArgs e)
+    {
+        // DemoLogger.WriteLine("NavMenu item clicked");
+    }
+    private List<MenuItem> menuItems = new List<MenuItem>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        menuItems = await MenuService.GetMenuItemsAsync();
+    }
+}
+
+
+

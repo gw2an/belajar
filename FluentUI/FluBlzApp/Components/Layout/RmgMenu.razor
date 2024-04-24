@@ -1,0 +1,38 @@
+@using FluBlzApp.Svc
+@inject IMenuService MenuService
+@rendermode InteractiveServer
+
+<ul>
+    <div class="navmenu">
+        <input type="checkbox" id="navmenu-toggle" />
+        <nav class="sitenav" aria-labelledby="main-menu" onclick="document.getElementById('navmenu-toggle').click();">
+            <FluentNavMenu Id="main-menu" Collapsible="true" Width="250" Title="Navigation menu" @bind-Expanded="expanded">
+                @foreach (var item in menuItems)
+                {
+                    <FluentNavLink Href="@item.Link" Match="NavLinkMatch.All" Icon="@item.Iconne" IconColor="Color.Accent">@item.Title</FluentNavLink>
+                    @if (item.SubItems.Any())
+                    {
+                        <ul>
+                            @foreach (var subItem in item.SubItems)
+                            {
+                                <FluentNavLink Href="@subItem.Link" Match="NavLinkMatch.All" Icon="@subItem.Iconne" IconColor="Color.Accent">@subItem.Title</FluentNavLink>
+                            }
+                        </ul>
+                    }
+
+                }
+            </FluentNavMenu>
+        </nav>
+    </div>
+</ul>
+
+@code {
+    private bool expanded = true;
+
+    private List<MenuItem> menuItems = new List<MenuItem>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        menuItems = await MenuService.GetMenuItemsAsync();
+    }
+}
